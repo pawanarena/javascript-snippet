@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pyramid Pattern</title>
+	<style>
+		body {
+			background-color: white;
+		}
+
+		.pyramid {
+			font-family: monospace;
+			text-align: center;
+			margin: auto;
+		}
+
+		.pyramid span {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			background-color: white;
+			font-size: 16px;
+			color: black;
+			line-height: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="pyramid"></div>
+
+	<script>
+		const numRows = 9; // The number of rows in the pyramid
+		const rowWidth = numRows * 2 - 1; // The number of circles in the widest row
+		let pyramid = '';
+
+		for (let i = 1; i <= numRows; i++) {
+			// Create a div to hold the asterisks for the current row
+			const row = document.createElement('div');
+
+			// Add spaces to the left and right of the asterisks to create a centered pyramid
+			row.style.marginLeft = `${((rowWidth - (i * 2 - 1)) / 2) * 20}px`;
+			row.style.marginRight = `${((rowWidth - (i * 2 - 1)) / 2) * 20}px`;
+
+			// Add the asterisks for the current row
+			for (let j = 1; j <= i * 2 - 1; j++) {
+				const asterisk = document.createElement('span');
+				asterisk.textContent = '*';
+				row.appendChild(asterisk);
+			}
+
+			document.querySelector('.pyramid').appendChild(row);
+		}
+	</script>
+</body>
+</html>
